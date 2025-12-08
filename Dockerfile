@@ -12,7 +12,7 @@ COPY package*.json ./
 # 4. ติดตั้ง Library (ใช้ npm ci จะดีกว่า npm install ใน production เพราะแม่นยำกว่า)
 RUN npm ci --only=production
 
-# 5. คัดลอก Source Code ทั้งหมดเข้าไป # แปล: "เอาของทุกอย่างที่วางอยู่ตรงหน้าฉัน (เครื่องเรา) ไปวางแปะไว้ที่ห้อง WORKDIR (ใน Container)"
+# 5. คัดลอก Source Code ทั้งหมดเข้าไป # แปล: "เอาของทุกอย่างที่วางอยู่ตรงหน้าฉัน (เครื่องเรา) ไปวางแปะไว้ที่ห้อง WORKDIR (ใน Container)" # (ไฟล์โค้ดทั้งหมด อยู่ที่ /app)
 COPY . .
 
 # 6. (Optional) เปลี่ยน User จาก root เป็น 'node' เพื่อความปลอดภัย
@@ -24,4 +24,5 @@ EXPOSE 3000
 # 8. คำสั่งรันโปรแกรม
 # แนะนำให้เรียก node โดยตรง แทน npm start เพื่อการจัดการ signal ที่ดีกว่า
 CMD ["node", "app.js"]
+
 
